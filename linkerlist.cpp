@@ -38,6 +38,12 @@ void append(Node **he,int data)
     *he=ne;
 
 }
+void merger(Node** po,Node *h2)
+{
+    Node *h1=*po;
+    while ((h1->next)!=NULL)h1=h1->next;
+    h1->next=h2;
+}
 main()
 {
     Node *head=NULL;
@@ -46,6 +52,14 @@ main()
     push(&head,75);
     insertafter(head,65);
     append(&head,45);
+    print (head);
+    Node *hea=NULL;
+    append(&hea,75);
+    push(&hea,15);
+    push(&hea,75);
+    insertafter(hea,65);
+    append(&hea,45);
+    merger(&head,hea);
     print(head);
 
 }
