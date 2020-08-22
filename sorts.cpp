@@ -76,10 +76,25 @@ void quicksort(int *a, int l, int h)
         quicksort(a, pi + 1, h);
     }
 }
+void insertions(int *a,int n)
+{
+    int key,i,j;
+    for(i=1;i<n;i++)
+    {
+        key=a[i];
+        j=i-1;
+        while(j>=0&&a[j]>key)
+        {
+            a[j+1]=a[j];
+            j--;
+        }
+        a[j+1]=key;
+    }
+}
 main()
 {
     int a[A] = {2, 65, 6, 6, 4, 45};
-    quicksort(a, 0, A - 1);
+    insertions(a, A );      //     merge,insertion,quick sorts avaliable
     int i;
     for (i = 0; i < A; i++)
         cout << a[i] << endl;
