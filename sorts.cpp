@@ -2,10 +2,9 @@
 #include <vector>
 #define A 6
 using namespace std;
-
 void merger(int a[], int l, int m, int r)
 {
-    int n1 = m - l + 1, n2 = r - m;
+    const int n1 = m - l + 1, n2 = r - m;
     int L[n1], R[n2];
     int i, j, k;
     for (i = 0; i < n1; i++)
@@ -15,7 +14,7 @@ void merger(int a[], int l, int m, int r)
     i = 0, j = 0, k = l;
     while (i < n1 && j < n2)
     {
-        if (L[i] <= R[j])
+        if (L[i] >= R[j]) //change
         {
             a[k] = L[i];
             i++;
@@ -49,23 +48,24 @@ void mergesort(int a[], int l, int r)
         mergesort(a, l, m);
         mergesort(a, m + 1, r);
         merger(a, l, m, r);
-        // cout<<i++;
     }
 }
-void swap(int *a, int *b)
+
+void swap(int &a, int &b)
 {
-    int t = *a;
-    *a = *b;
-    *b = t;
+    int t = a;
+    a = b;
+    b = t;
 }
 
 int partition(int *a, int l, int h)
 {
     int pi = a[h], i = l, j = 0;
     for (j = l; j <= h - 1; j++)
-        if (a[j] < pi) swap(a + i++, a + j);
-    swap(a + h, a + i);
-    return i ;
+        if (a[j] > pi)
+            swap(a[i++], a[j]); //change
+    swap(a[h], a[i]);
+    return i;
 }
 void quicksort(int *a, int l, int h)
 {
@@ -76,26 +76,43 @@ void quicksort(int *a, int l, int h)
         quicksort(a, pi + 1, h);
     }
 }
-void insertions(int *a,int n)
+void insertions(int *a, int n)
 {
-    int key,i,j;
-    for(i=1;i<n;i++)
+    int key, i, j;
+    for (i = 1; i < n; i++)
     {
-        key=a[i];
-        j=i-1;
-        while(j>=0&&a[j]>key)
+        key = a[i];
+        j = i - 1;
+        while (j >= 0 && a[j] > key) //change
         {
-            a[j+1]=a[j];
+            a[j + 1] = a[j];
             j--;
         }
-        a[j+1]=key;
+        a[j + 1] = key;
+    }
+}
+void bubble(int *a, int n)
+{
+    int i, j;
+    for (i = 0; i < n; i++)
+    {
+        for (j = i; j < n; j++)
+            if (a[i] > a[j]) //change
+            {
+                int t = a[i];
+                a[i] = a[j];
+                a[j] = t;
+            }
     }
 }
 main()
 {
     int a[A] = {2, 65, 6, 6, 4, 45};
-    insertions(a, A );      //     merge,insertion,quick sorts avaliable
+    quicksort(a, 0, A - 1); //     merge,insertion,quick,bubble sorts avaliable
     int i;
     for (i = 0; i < A; i++)
         cout << a[i] << endl;
+    char p = 'd';
+    p &= '_';
+    cout << p;
 }
