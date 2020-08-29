@@ -28,12 +28,17 @@ void hrectangle(int l,int b,char c)
     }
     
 }
-void invehalftri(int o,char c)
+void invehalftri(int o,char c,int p)
 {
-    int i,j=0;
+    int i,j=0,k;
     for ( i = 0; i<=o; i++)
     {
+        if(p==1)
         for(j=o-i;j>0;j--)cout<<c;
+        else
+        {
+             for(j=o-i,k=1;j>0;j--,k++)cout<<k;
+        }
         cout<<endl;
     }
     
@@ -61,7 +66,7 @@ void holinvehalftri(int o,char c)
         cout<<endl;
     }
 }
-void fulpyr(int o,char a,int f)
+void fulpyr(int o,char a,int f,int)
 {
     int i,j,k;
     for(i=0;i<o;i++)
@@ -89,7 +94,7 @@ void infulpyr(int o,char c,int f)
     int i,j,k;
     for(i=0;i<o;i++)
     {
-        for(j=0;j<=i;j++)cout<<" ";
+        for(j=0;j<i;j++)cout<<" ";
         for(k=2*o-i*2+1;k>0;k--)
         {
             if(f==0){
@@ -119,8 +124,10 @@ main()
 {
     //srectangle(6,5,'e');   
     //hrectangle(6,5,'*');
-    //invehalftri(5,'*');
+    invehalftri(10,'*',0);
     //holinvehalftri(8,'*');
-   //fulpyr(21,'*',1);          //'1'hollow '0'solid
-    infulpyr(10,'*',1);         //'1'hollow '0'solid
+   fulpyr(21,'*',1);          //'1'hollow '0'solid
+   
+  //infulpyr(10,'*',1);
+    //fulpyr(10,'*',1);         //'1'hollow '0'solid
 }
