@@ -1,12 +1,7 @@
 #include<iostream>
 using namespace std;
-void change(float *a,int n)
-{
-    int i;
-    float t=a[0];
-    for(i=0;i<n-1;i++)a[i]=a[i+1];
-    a[i]=t;
-}
+///A convolution is process used in ECE for signal analysis. 
+// used to find 
 main()
 {
     int n,i,j;
@@ -38,12 +33,12 @@ main()
         cout<<sum[n+i-1]<<" ";
     }
     cout<<endl<<"CircularConvolve: ";
-    for(i=0;i<n;i++)
+    for(i=1;i<=n;i++)
     {
-        change(a,n);
-        s[i]=0;
-        for(j=0;j<n;j++) s[i]+=a[n-j-1]*b[j];
-        cout<<s[i]<<" ";
+        
+        int t=0;
+        for(j=0;j<n;j++) t+=a[((n-j-1-i)<0?(n+(n-j-1-i)):(n-j-1-i))]*b[j];
+        cout<<t<<" ";
     }
     
 }
