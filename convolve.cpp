@@ -6,7 +6,7 @@ main()
 {
     int n,i,j;
     cin>>n;
-    float a[n],b[n],s[n];
+    float a[n],b[n];
     for ( i = 0; i < n; i++)cin>>a[i];
     for ( i = 0; i < n; i++)cin>>b[i];
     float m[n][n],sum[2*n-1];
@@ -26,10 +26,7 @@ main()
     {
         int j=n-1,k=i;
         sum[n+i-1]=0;
-        while(k<n)
-        {
-            sum[n+i-1]+=m[j--][k++];
-        }
+        while(k<n) sum[n+i-1]+=m[j--][k++];
         cout<<sum[n+i-1]<<" ";
     }
     cout<<endl<<"CircularConvolve: ";
