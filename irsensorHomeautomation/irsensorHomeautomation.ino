@@ -2,19 +2,22 @@
 int dtect=8;
 int sense=A0;
 int buzzpin=9;
-int sense1=7;
+int sense1=A1;
 void setup() {
   // put your setup code here, to run once:
      pinMode(sense1,INPUT);
       pinMode(sense,INPUT);
+      pinMode(dtect,OUTPUT);
       Serial.begin(9600);
 }
 int c=0,c1=0,f=0,f1=0;
 void loop() {
   // put your main code here, to run repeatedly:
     int val=analogRead(sense);
-    int val1=digitalRead(sense1);
-    Serial.println(val1);
+    int val1=analogRead(sense1);
+   // Serial.println(val1);
+   
+   
     if(val>1000)
     {
       while(val>1000)
@@ -73,6 +76,11 @@ void loop() {
         
       }
       if(f1==1)c--;
+      int y;
+      Serial.write(y);
+      digitalWrite(8,HIGH);
+      delay(y);
+      digitalWrite(8,LOW);
   Serial.print(val);
     Serial.print(" ");
      Serial.print(val1);
