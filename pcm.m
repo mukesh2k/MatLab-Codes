@@ -5,7 +5,7 @@ t=0:0.01:1;  %range for the message signal
 A=1;
 f=1;      %frequency  
 msg_sig=A*sin(2*pi*f*t);  %message signal
-figure
+
 plot(msg_sig);
 xlabel('time');
 ylabel('amplitude');
