@@ -36,6 +36,7 @@ void append(Node **he,int data)
     ne->data=data;
     ne->next=*he;
     *he=ne;
+    //major correction
 
 }
 void merger(Node** po,Node *h2)
