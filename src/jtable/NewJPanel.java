@@ -22,7 +22,7 @@ public class NewJPanel extends javax.swing.JPanel {
     DefaultTableModel model;
     public NewJPanel() {
         initComponents();
-        model= (DefaultTableModel) table.getModel();
+       
         
     }
 
